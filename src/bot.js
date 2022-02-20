@@ -26,7 +26,7 @@ const bot = new Client(),
 
 	// Connect bot to discord API
 	const token = bot.config.token;
-	bot.login(token).catch(e => bot.logger.error(e.message));
+	bot.login(process.env.token).catch(e => bot.logger.error(e.message));
 })();
 
 // load commands
@@ -75,7 +75,6 @@ async function loadEvents() {
 		});
 	});
 }
-
 // handle unhandledRejection errors
 process.on('unhandledRejection', err => {
 	bot.logger.error(`Unhandled promise rejection: ${err.message}.`);
